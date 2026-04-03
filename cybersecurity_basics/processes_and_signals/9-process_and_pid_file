@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+#salam
+echo $$ > /tmp/myscript.pid
+
+# Təmizlik funksiyası: faylı silir və skripti bitirir
+cleanup() {
+    rm /tmp/myscript.pid
+    exit
+}
+
+# 2. Siqnalları (trap) qururuq:
+
+# SIGINT (Ctrl+C) üçün mesaj (skript dayanmır)
+trap "echo 'Y U no love me?!'" SIGINT
+
+# SIGTERM üçün mesaj çap edir, faylı silir və bağlanır
+trap "echo 'I hate the kill command'; cleanup" SIGTERM
+
+
+trap "cleanup" SIGQUIT
+
+while true
+do
+    echo "To infinity and beyond"
+    sleep 2
+done
