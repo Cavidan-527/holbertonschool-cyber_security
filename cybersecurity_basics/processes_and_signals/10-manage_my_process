@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+#salam
+case "$1" in
+    start)
+        # Skripti arxa planda (&) başladırıq
+        ./manage_my_process &
+        # Sonuncu başladılan prosesin PID-sini ($!) fayla yazırıq
+        echo $! > /tmp/my_process.pid
+        echo "manage_my_process started"
+        ;;
+    stop)
+        # Fayldan PID-ni oxuyub prosesi öldürürük
+        if [ -f /tmp/my_process.pid ]; then
+            kill "$(cat /tmp/my_process.pid)"
+            rm /tmp/my_process.pid
+            echo "manage_my_process stopped"
+        fi
+        ;;
+    restart)
+        # Əvvəlcə dayandırırıq
+        if [ -f /tmp/my_process.pid ]; then
+            kill "$(cat /tmp/my_process.pid)"
+            rm /tmp/my_process.pid
+        fi
+        # Sonra yenidən başladırıq
+        ./manage_my_process &
+        echo $! > /tmp/my_process.pid
+        echo "manage_my_process restarted"
+        ;;
+    *)
+        # Düzgün arqument daxil edilmədikdə
+        echo "Usage: manage_my_process {start|stop|restart}"
+        exit 1
+        ;;
+esac
