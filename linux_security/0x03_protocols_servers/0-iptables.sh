@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo iptables -L -n --line-numbers
+iptables -L -n --line-numbers | grep "$1"
