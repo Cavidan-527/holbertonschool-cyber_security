@@ -1,2 +1,2 @@
 #!/bin/bash
-sshd -T
+egrep -v "^#|^$" /etc/ssh/sshd_config
