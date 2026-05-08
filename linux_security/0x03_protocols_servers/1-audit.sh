@@ -1,2 +1,2 @@
 #!/bin/bash
-grep "^[a-zA-Z]" /etc/ssh/sshd_config
+egrep -v "^\s*#|^\s*$" /etc/ssh/sshd_config
