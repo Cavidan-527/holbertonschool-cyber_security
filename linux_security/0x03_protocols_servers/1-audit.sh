@@ -1,2 +1,2 @@
 #!/bin/bash
-cat /etc/ssh/sshd_config | egrep -v '^\s*#|^\s*$'
+awk '!/^[ \t]*#/ && !/^[ \t]*$/' /etc/ssh/sshd_config
