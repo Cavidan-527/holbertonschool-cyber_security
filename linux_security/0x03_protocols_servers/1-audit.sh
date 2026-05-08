@@ -1,2 +1,2 @@
 #!/bin/bash
-awk '!/^[ \t]*#/ && !/^[ \t]*$/' /etc/ssh/sshd_config
+cat /etc/ssh/sshd_config | grep -v '^\s*#|^\s*$'
