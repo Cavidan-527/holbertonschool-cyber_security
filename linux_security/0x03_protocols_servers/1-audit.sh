@@ -1,2 +1,2 @@
 #!/bin/bash
-awk '!/^[ \t]*#/ && NF' /etc/ssh/sshd_config
+grep -vE '^[[:space:]]*#|^[[:space:]]*$' /etc/ssh/sshd_config
