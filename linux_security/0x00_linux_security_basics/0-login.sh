@@ -1,2 +1,2 @@
 #!/bin/bash
-last -5 -F
+last -n 5
