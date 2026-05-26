@@ -1,2 +1,2 @@
 #!/bin/bash
-john --wordlist=/usr/share/wordlists/rockyou.txt --format=nt "$1" | awk -F: '/:/{print $2}' > 5-password.txt
+john --wordlist=/usr/share/wordlists/rockyou.txt --format=nt "$1"
